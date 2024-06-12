@@ -1,10 +1,16 @@
 const nombres = [10, 20, 30, 40, 50];
 
 function isGreaterThan25(number) {
-  return number > 25;
+    return number > 25;
 }
 
-const filteredNumbers = nombres.filter(isGreaterThan25);
+const filteredNumbers =[]
+let index = 0; 
 
-//exemple 
-console.log(filteredNumbers);
+for (let i = 0; i < nombres.length; i++) {
+    if (isGreaterThan25(nombres[i])) {
+        filteredNumbers[index] = nombres[i];
+        index++;
+    }
+}
+console.log(filteredNumbers); 
