@@ -1,23 +1,72 @@
-function MajletterChaqueMot(phrase){
-    //pour séparer une phrase en mot dans un tableau avec la fonction .split(' ')
-    let Mots=phrase.split(' ');
-    //applique une fonction mettre en majuscule la première lettre à chaque element du tableau
-    
-    let  ChaqueMots =Mots.map(function(mot){
-        let firstletter =mot[0].toUpperCase()
-        let resteletter =''
-        let letter=''
-        for(i=1 ;i<=mot.length-1 ;i++){
-            resteletter += mot[i]
-        }
-        letter=firstletter+resteletter
-        return letter 
-    })
-   //joindre les elements dans le tableau
-  return ChaqueMots.join(' ')
-}
 
-//exemple
-console.log(MajletterChaqueMot("ando est un hero"));
+
+    //séparer une phrase en mot et mettre chaque mot dans un tableau */
+    function SeparatorTableau(chaine){
+        let tableau =[];
+        let nouveauMot =("")
+
+        for (let i =0;i< chaine.length;i++ ){
+            let caractere = chaine[i];
+     
+            if (caractere !== ' '){
+            nouveauMot += caractere;
+            }else{
+                if (nouveauMot){
+                    tableau.push(nouveauMot);
+                    nouveauMot ="";
+                }
+            }  
+        }
+
+        if (nouveauMot){
+            tableau.push(nouveauMot)
+        }
+
+        return tableau
+    }
+//fonction pour mettre en majuscule chaque la première lettre de mot
+    function MajPremiereLettre (mot){
+        let fisrtLetter = mot[0].toUpperCase();
+        let resteletter = ''
+        for (let j=1 ;j<mot.length;j++){
+            resteletter += mot[j];
+        }
+        return fisrtLetter + resteletter
+      
+    };
+    
+
+// Transformer chaque mot dans le tableau avec la première lettre en majuscule
+    function MajTableau (tableau){
+        let resultatTableau =[];
+
+        for (let i = 0; i < tableau.length; i++) {
+        let result = MajPremiereLettre(tableau[i]);
+        resultatTableau.push(result);
+            
+        } 
+        return resultatTableau  
+    
+    };
+
+// rassembler les mots
+    function Rassembler (table){
+        let resultfinal=''
+        for (i=0 ;i<table.length;i++){
+         resultfinal += table[i]+ " "
+        }
+        return resultfinal
+    }
+// fonction final
+    function letterMaj (chaine){
+        let tableau = SeparatorTableau(chaine);
+        let tableauMaj = MajTableau (tableau)
+        return Rassembler(tableauMaj)
+    }
+
+
+    console.log(letterMaj("le javascript demande beaucoup de concentration"));
+
+    
 
 

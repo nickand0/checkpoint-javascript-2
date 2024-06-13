@@ -1,16 +1,14 @@
-const nombres = [10, 20, 30, 40, 50];
 
-function isGreaterThan25(number) {
-    return number > 25;
-}
-
+function numberfiltre(table){
 const filteredNumbers =[]
 let index = 0; 
 
-for (let i = 0; i < nombres.length; i++) {
-    if (isGreaterThan25(nombres[i])) {
-        filteredNumbers[index] = nombres[i];
-        index++;
+for (let i = 0; i < table.length; i++) {
+        if (table[i] > 25 ) {
+            filteredNumbers[index] = table[i];
+            index++;
+        } 
     }
+    return filteredNumbers
 }
-console.log(filteredNumbers); 
+console.log(numberfiltre([10, 20, 30, 40, 50])); 
